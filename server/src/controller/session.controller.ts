@@ -16,7 +16,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
     return res.status(401).send("Invalid email or password");
   }
 
-  // Create a session
+  // create a session
   const session = await createSession(user._id, req.get("user-agent") || "");
 
   // Create an access token
@@ -54,6 +54,8 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 
   return res.send({ accessToken, refreshToken });
 }
+
+
 
 export async function getUserSessionsHandler(req: Request, res: Response) {
   const userId = res.locals.user._id;
