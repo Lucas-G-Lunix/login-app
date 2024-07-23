@@ -11,7 +11,7 @@ const deserializeUser = async (
   const accessToken =
     get(req, "cookies.accessToken") ||
     get(req, "headers.authorization", "").replace(/^Bearer\s/, "");
-
+  
   const refreshToken =
     get(req, "cookies.refreshToken") || get(req, "headers.x-refresh");
 
@@ -47,7 +47,7 @@ const deserializeUser = async (
     res.locals.user = result.decoded;
     return next();
   }
-
+  
   return next();
 };
 
